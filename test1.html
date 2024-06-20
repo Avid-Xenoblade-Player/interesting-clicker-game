@@ -1,0 +1,175 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+			<script>
+				function sigmaButton() {
+			document.getElementById("button").innerHTML = "You exist (surprise!!) You've pressed the button.";
+			alert("Nothing happened except this alert... Press OK to continue.");
+			}
+		</script>
+		<script>
+		var recursion = 0;
+		function yourName() {
+			if (recursion == 0 || recursion >= 4) {
+				let name = prompt("Please enter your name");
+				if (name != "null" && name != "recursion") {
+	document.getElementById("buttonTwo").innerHTML = "Hello " + name + ".";
+					} else if (name == "null") {
+	alert("Smartie...");
+					} else if (name == "recursion") {
+					recursion++
+					yourName();
+			}
+		} else if (recursion == 1) {
+				let name = prompt("Please enter your name again");
+				if (name != "null" && name != "recursion") {
+	document.getElementById("buttonTwo").innerHTML = "Hello " + name + ".";
+					} else if (name == "null") {
+	alert("Smartie...");
+					} else if (name == "recursion") {
+					recursion++
+					yourName();
+	}
+} else if (recursion == 2) {
+			  let name = prompt("Please! Enter your name!");
+				if (name != "null" && name != "recursion") {
+  document.getElementById("buttonTwo").innerHTML = "Hello " + name + ".";
+					} else if (name == "null") {
+	alert("Smartie...");
+					} else if (name == "recursion") {
+					recursion++
+					yourName();
+	}
+} else if (recursion == 3) {
+	let name = prompt("I give up... Write recursion if you want.");
+				if (name != "null" && name != "recursion") {
+  document.getElementById("buttonTwo").innerHTML = "Hello " + name + ".";
+					} else if (name == "null") {
+	alert("Smartie...");
+					} else if (name == "recursion") {
+					recursion++
+					yourName();
+	}			
+}
+}			
+		</script>
+		<script>
+			var timesPressed = 0;
+			var totalTimesPressed = 0;
+			var pressesPer = 1;
+			var purchaseCostOne = 20;
+			var pressesSquared = 1;
+			var purchaseCostTwo = 1000;
+			function presses() {
+  				timesPressed = timesPressed + (pressesPer*pressesSquared);
+				totalTimesPressed = totalTimesPressed + (pressesPer*pressesSquared);
+ 				let message;
+  				switch (true) {
+					case (totalTimesPressed >= 200):
+						message = "Game's still playing.";
+						break;
+    				case (totalTimesPressed >= 100 && timesPressed < 200):
+     					message = "Best job! You're the keenest button presser!";
+      				break;
+    				case (totalTimesPressed >= 50 && timesPressed < 100):
+      				message = "Great job! You're a keener button presser!";
+      				break;
+    				case (totalTimesPressed >= 21 && timesPressed < 50):
+						message = "Good job! You're a keen button presser!";
+      				break;
+    				default:
+      				message = "Nothing to see here.";
+  }
+  document.getElementById("buttonThree").innerHTML = message + " (Total times pressed: " + totalTimesPressed + ")";
+  document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed;
+}
+		function morePresses() {
+			if (timesPressed >= purchaseCostOne) {
+				pressesPer++;
+				timesPressed = timesPressed - purchaseCostOne;
+				purchaseCostOne = purchaseCostOne + (pressesPer*2);
+				document.getElementById("buttonFour").innerHTML = "Presses per press: " + pressesPer + ".";
+				document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
+				document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed;
+				} else {
+				document.getElementById("buttonFour").innerHTML = "Presses per press: " + pressesPer + ".";
+				document.getElementById("purchaseInfo").innerHTML = "Failed. Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
+				}
+			}
+		function morePressesAgain() {
+			if (pressesPer >= purchaseCostTwo) {
+				pressesSquared++;
+				pressesPer = pressesPer - purchaseCostTwo;
+				purchaseCostTwo = purchaseCostTwo + (pressesSquared*2);
+				document.getElementById("buttonFive").innerHTML = "Presses per presses per press: " + pressesSquared + ".";
+				document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
+				document.getElementById("buttonFour").innerHTML = "Presses per press: " + pressesPer + "."; 
+				} else {
+				document.getElementById("buttonFive").innerHTML = "Presses per presses per press: " + pressesSquared + ".";
+				document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Failed. Current cost two: " + purchaseCostTwo + ".";
+				}
+			}
+		</script>
+		<title>
+			Sample Web Page
+		</title>
+	</head>
+	<body>
+		<script>
+		var timesPressed = 0;
+		</script>
+		<h1>
+			Hi.
+		</h1>
+		<p>
+			It's very sad.
+			<b>
+			I don't enjoy it.
+			</b>
+			<i>
+			I can deal with it.
+			</i>
+			<u>
+			I'll be fine.	
+			</u>
+			<mark>
+			Highlight this
+			</mark>
+			<sup>
+			 put this above, 
+			</sup>
+			<sub>
+			and put this below.
+			</sub>
+			For fun. 
+		</p>
+		<p>
+			Hi.
+		</p>
+		<p>
+			Hello again.
+		</p>
+		<button onclick="sigmaButton()">
+			Press this button if you exist
+		</button>
+		<button onclick="yourName()">
+			Press this button to learn your name
+		</button>
+		<button onclick="presses()">
+			Press this button for a game!
+		</button>
+		<button onclick="morePresses()">
+			Press this button to increase presses per press.
+		</button>
+		<button onclick="morePressesAgain()">
+			Press this button to increase presses per presses per press.
+		</button>
+		<p id="button"></p>
+		<p id="buttonTwo"></p>
+		<p id="buttonThree"></p>
+		<p id="pressesInfo"></p>
+		<p id="buttonFour"></p>
+		<p id="purchaseInfo"></p>
+		<p id="buttonFive"></p>
+	</body>
+</html>
