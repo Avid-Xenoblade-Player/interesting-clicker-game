@@ -56,13 +56,13 @@
 		<script>
 			var timesPressed = 0;
 			var totalTimesPressed = 0;
-			var pressesPer = 1;
+			var pressesPer = 0;
 			var purchaseCostOne = 20;
-			var pressesSquared = 1;
+			var pressesSquared = 0;
 			var purchaseCostTwo = 20;
 			function presses() {
-  				timesPressed = timesPressed + (pressesPer*pressesSquared);
-				totalTimesPressed = totalTimesPressed + (pressesPer*pressesSquared);
+  				timesPressed = timesPressed + ((pressesPer+1)*(pressesSquared+1));
+				totalTimesPressed = totalTimesPressed + ((pressesPer+1)*(pressesSquared+1));
  				let message;
   				switch (true) {
 					case (totalTimesPressed >= 200):
@@ -87,25 +87,26 @@
 			if (timesPressed >= purchaseCostOne) {
 				pressesPer++;
 				timesPressed = timesPressed - purchaseCostOne;
-				purchaseCostOne = purchaseCostOne + (pressesPer*2);
-				document.getElementById("buttonFour").innerHTML = "Presses per press: " + pressesPer + ".";
+				purchaseCostOne = 20 + (((pressesPer+1)*2)*(((pressesPer+1)*2)-1))/2;
+				document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer+1) + ".";
 				document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
 				document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed;
 				} else {
-				document.getElementById("buttonFour").innerHTML = "Presses per press: " + pressesPer + ".";
+				document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer+1) + ".";
 				document.getElementById("purchaseInfo").innerHTML = "Failed. Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
 				}
 			}
 		function morePressesAgain() {
-			if (pressesPer > purchaseCostTwo) {
+			if (pressesPer > purchaseCostTwo-) {
 				pressesSquared++;
 				pressesPer = pressesPer - purchaseCostTwo;
-				purchaseCostTwo = purchaseCostTwo + (pressesSquared*2);
-				document.getElementById("buttonFive").innerHTML = "Presses per presses per press: " + pressesSquared + ".";
+				purchaseCostTwo = 20 + (((pressesSquared+1)*2)*(((pressesSquared+1)*2)-1))/2;
+				purchaseCostOne - 20 + (((pressesPer+1)*2)*(((pressesPer+1)*2)-1))/2;
+				document.getElementById("buttonFive").innerHTML = "Presses per presses per press: " + (pressesSquared+1) + ".";
 				document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
-				document.getElementById("buttonFour").innerHTML = "Presses per press: " + pressesPer + "."; 
+				document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer+1) + "."; 
 				} else {
-				document.getElementById("buttonFive").innerHTML = "Presses per presses per press: " + pressesSquared + ".";
+				document.getElementById("buttonFive").innerHTML = "Presses per presses per press: " + (pressesSquared+1) + ".";
 				document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Failed. Current cost two: " + purchaseCostTwo + ".";
 				}
 			}
