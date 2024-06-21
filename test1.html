@@ -54,6 +54,33 @@
 }			
 		</script>
 		<script>
+			function saveGame() {
+  					const gameData = {
+    					timesPressed: timesPressed,
+   					 pressesPer: pressesPer,
+   					 pressesSquared: pressesSquared,
+					    purchaseCostOne: purchaseCostOne,
+					    purchaseCostTwo: purchaseCostTwo,
+ 					   totalTimesPressed: totalTimesPressed,
+						};
+  						localStorage.setItem('clickerGameData', JSON.stringify(gameData));
+						document.getElementById("saveLoadStatus").innerHTML = "Saved successfully.";
+				}
+			function loadGame() {
+  				const savedData = localStorage.getItem('clickerGameData');
+ 					 if (savedData) {
+   			 const gameData = JSON.parse(savedData);
+  			  timesPressed = gameData.timesPressed;
+  			  pressesPer = gameData.pressesPer;
+ 				   pressesSquared = gameData.pressesSquared;
+			    purchaseCostOne = gameData.purchaseCostOne;
+						    purchaseCostTwo = gameData.purchaseCostTwo;
+			    totalTimesPressed = gameData.totalTimesPressed;
+				document.getElementById("saveLoadStatus").innerHTML = "Game loaded successfully.";
+  }
+}
+
+
 			var timesPressed = 0;
 			var totalTimesPressed = 0;
 			var pressesPer = 0;
@@ -172,5 +199,12 @@
 		<p id="buttonFour"></p>
 		<p id="purchaseInfo"></p>
 		<p id="buttonFive"></p>
+		<button onclick="loadGame()">
+			Click to load your game.
+			</button>
+		<button onclick="saveGame()">
+			Click to save your game.
+			</button>
+		<p id="saveLoadStatus"></p>
 	</body>
 </html>
