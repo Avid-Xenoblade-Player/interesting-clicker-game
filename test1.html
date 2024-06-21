@@ -1,145 +1,9 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="styles.css">
-			<script>
-				function sigmaButton() {
-			document.getElementById("button").innerHTML = "You exist (surprise!!) You've pressed the button.";
-			alert("Nothing happened except this alert... Press OK to continue.");
-			}
-		</script>
-		<script>
-		var recursion = 0;
-		function yourName() {
-			if (recursion == 0 || recursion >= 4) {
-				let name = prompt("Please enter your name");
-				if (name != "null" && name != "recursion") {
-	document.getElementById("buttonTwo").innerHTML = "Hello " + name + ".";
-					} else if (name == "null") {
-	alert("Smartie...");
-					} else if (name == "recursion") {
-					recursion++
-					yourName();
-			}
-		} else if (recursion == 1) {
-				let name = prompt("Please enter your name again");
-				if (name != "null" && name != "recursion") {
-	document.getElementById("buttonTwo").innerHTML = "Hello " + name + ".";
-					} else if (name == "null") {
-	alert("Smartie...");
-					} else if (name == "recursion") {
-					recursion++
-					yourName();
-	}
-} else if (recursion == 2) {
-			  let name = prompt("Please! Enter your name!");
-				if (name != "null" && name != "recursion") {
-  document.getElementById("buttonTwo").innerHTML = "Hello " + name + ".";
-					} else if (name == "null") {
-	alert("Smartie...");
-					} else if (name == "recursion") {
-					recursion++
-					yourName();
-	}
-} else if (recursion == 3) {
-	let name = prompt("I give up... Write recursion if you want.");
-				if (name != "null" && name != "recursion") {
-  document.getElementById("buttonTwo").innerHTML = "Hello " + name + ".";
-					} else if (name == "null") {
-	alert("Smartie...");
-					} else if (name == "recursion") {
-					recursion++
-					yourName();
-	}			
-}
-}			
-		</script>
-		<script>
-			function saveGame() {
-  					const gameData = {
-    					timesPressed: timesPressed,
-   					 pressesPer: pressesPer,
-   					 pressesSquared: pressesSquared,
-					    purchaseCostOne: purchaseCostOne,
-					    purchaseCostTwo: purchaseCostTwo,
- 					   totalTimesPressed: totalTimesPressed,
-						};
-  						localStorage.setItem('clickerGameData', JSON.stringify(gameData));
-						document.getElementById("saveLoadStatus").innerHTML = "Saved successfully.";
-				}
-			function loadGame() {
-  				const savedData = localStorage.getItem('clickerGameData');
- 					 if (savedData) {
-   			 const gameData = JSON.parse(savedData);
-  			  timesPressed = gameData.timesPressed;
-  			  pressesPer = gameData.pressesPer;
- 				   pressesSquared = gameData.pressesSquared;
-			    purchaseCostOne = gameData.purchaseCostOne;
-						    purchaseCostTwo = gameData.purchaseCostTwo;
-			    totalTimesPressed = gameData.totalTimesPressed;
-				document.getElementById("saveLoadStatus").innerHTML = "Game loaded successfully.";
-  }
-}
-
-
-			var timesPressed = 0;
-			var totalTimesPressed = 0;
-			var pressesPer = 0;
-			var purchaseCostOne = 20;
-			var pressesSquared = 0;
-			var purchaseCostTwo = 20;
-			function presses() {
-  				timesPressed = timesPressed + ((pressesPer+1)*(pressesSquared+1));
-				totalTimesPressed = totalTimesPressed + ((pressesPer+1)*(pressesSquared+1));
- 				let message;
-  				switch (true) {
-					case (totalTimesPressed >= 200):
-						message = "Game's still playing.";
-						break;
-    				case (totalTimesPressed >= 100 && timesPressed < 200):
-     					message = "Best job! You're the keenest button presser!";
-      				break;
-    				case (totalTimesPressed >= 50 && timesPressed < 100):
-      				message = "Great job! You're a keener button presser!";
-      				break;
-    				case (totalTimesPressed >= 21 && timesPressed < 50):
-						message = "Good job! You're a keen button presser!";
-      				break;
-    				default:
-      				message = "Nothing to see here.";
-  }
-  document.getElementById("buttonThree").innerHTML = message + " (Total times pressed: " + totalTimesPressed + ")";
-  document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed;
-}
-		function morePresses() {
-			if (timesPressed >= purchaseCostOne) {
-				pressesPer++;
-				timesPressed = timesPressed - purchaseCostOne;
-				purchaseCostOne = 20 + (((pressesPer+1)*2)*(((pressesPer+1)*2)-1))/2;
-				document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer+1) + ".";
-				document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
-				document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed;
-				} else {
-				document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer+1) + ".";
-				document.getElementById("purchaseInfo").innerHTML = "Failed. Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
-				}
-			}
-		function morePressesAgain() {
-			if (pressesPer > purchaseCostTwo) {
-				pressesSquared++;
-				pressesPer = pressesPer - purchaseCostTwo;
-				purchaseCostTwo = 20 + (((pressesSquared+1)*2)*(((pressesSquared+1)*2)-1))/2;
-				purchaseCostOne - 20 + (((pressesPer+1)*2)*(((pressesPer+1)*2)-1))/2;
-				document.getElementById("buttonFive").innerHTML = "Presses per presses per press: " + (pressesSquared+1) + ".";
-				document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
-				document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer+1) + "."; 
-				} else {
-				document.getElementById("buttonFive").innerHTML = "Presses per presses per press: " + (pressesSquared+1) + ".";
-				document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Failed. Current cost two: " + purchaseCostTwo + ".";
-				}
-			}
-		</script>
+		<script src="test1.js"></script>
 		<title>
-			Sample Web Page
+			Difference of Two Cubes
 		</title>
 	</head>
 	<body>
@@ -147,42 +11,10 @@
 		var timesPressed = 0;
 		</script>
 		<h1>
-			Hi.
+			Normal Generic Clicker Game
 		</h1>
-		<p>
-			It's very sad.
-			<b>
-			I don't enjoy it.
-			</b>
-			<i>
-			I can deal with it.
-			</i>
-			<u>
-			I'll be fine.	
-			</u>
-			<mark>
-			Highlight this
-			</mark>
-			<sup>
-			 put this above, 
-			</sup>
-			<sub>
-			and put this below.
-			</sub>
-			For fun. 
-		</p>
-		<p>
-			Hi.
-		</p>
-		<p>
-			Hello again.
-		</p>
-		<button onclick="sigmaButton()">
-			Press this button if you exist
-		</button>
-		<button onclick="yourName()">
-			Press this button to learn your name
-		</button>
+		<p id="events"></p>
+		<p></p>
 		<button onclick="presses()">
 			Press this button for a game!
 		</button>
@@ -192,13 +24,27 @@
 		<button onclick="morePressesAgain()">
 			Press this button to increase presses per presses per press.
 		</button>
-		<p id="button"></p>
-		<p id="buttonTwo"></p>
+		<p>------------</p>
 		<p id="buttonThree"></p>
 		<p id="pressesInfo"></p>
 		<p id="buttonFour"></p>
 		<p id="purchaseInfo"></p>
 		<p id="buttonFive"></p>
+		<p id="movementInfo"></p>
+		<button onclick="movement()">
+			Press this button to move.
+		</button>
+		<p id="distanceCostInfo"></p>
+		<!-- <button onclick="velocity()">
+			Press this button to increase speed.
+			</button>
+		<p id="velocityCostInfo"></p>
+		<button onclick="accel()">
+			Press this button to increase acceleration.
+		</button>
+		<p id="accelCostInfo"></p>
+		-->
+		<p>------------</p>
 		<button onclick="loadGame()">
 			Click to load your game.
 			</button>
@@ -206,5 +52,14 @@
 			Click to save your game.
 			</button>
 		<p id="saveLoadStatus"></p>
+		<button onclick="resetGame()">
+			Click to delete save data and reset your game.
+			</button>
+		<p id="resetStatus"></p>
+		<p>
+			<a href="things.html">
+				Click here.
+			</a>
+		</p>
 	</body>
 </html>
