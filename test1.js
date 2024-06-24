@@ -77,21 +77,48 @@ function saveGame() {
       document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed + ". Presses per press: " + onePress + ".";
       }
 
-      function morePresses() {
-        if (timesPressed >= purchaseCostOne) {
-          pressesPer++;
-          timesPressed = timesPressed - purchaseCostOne;
-          purchaseCostOne = 20 + (((pressesPer + 1) * 2) * (((pressesPer + 1) * 2) - 1)) / 2;
-          document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer + 1) + ".";
-          document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
-          document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed;
-        } else {
-          document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer + 1) + ".";
-          document.getElementById("purchaseInfo").innerHTML = "Failed. Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
-        }
-      }
+      function morePresses(shiftPressed) {
+			if (shiftPressed) {
+						i = 0;
+			      while (timesPressed >= purchaseCostOne) {
+						pressesPer++;
+          			timesPressed = timesPressed - purchaseCostOne;
+          			purchaseCostOne = 20 + (((pressesPer + 1) * 2) * (((pressesPer + 1) * 2) - 1)) / 2;
+						i++;
+						}
+          			document.getElementById("buttonFour").innerHTML = "Bought: " + i + ". Presses per press: " + (pressesPer + 1) + ".";
+          			document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
+          			document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed;
+			} else {
+				if (timesPressed >= purchaseCostOne) {
+          		pressesPer++;
+          		timesPressed = timesPressed - purchaseCostOne;
+          		purchaseCostOne = 20 + (((pressesPer + 1) * 2) * (((pressesPer + 1) * 2) - 1)) / 2;
+          		document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer + 1) + ".";
+          		document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
+          		document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed;
+        		} else {
+          		document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer + 1) + ".";
+          		document.getElementById("purchaseInfo").innerHTML = "Failed. Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
+        		}
+      	}
+			}
 
-      function morePressesAgain() {
+      function morePressesAgain(shiftPressed) {
+			if (shiftPressed) {
+				i = 0;
+				while (pressesPer > purchaseCostTwo) {
+					pressesSquared++;
+          		pressesPer = pressesPer - purchaseCostTwo;
+          		timesPressed = 0
+          		purchaseCostTwo = 20 + (((pressesSquared + 1) * 2) * (((pressesSquared + 1) * 2) - 1)) / 2;
+          		purchaseCostOne - 20 + (((pressesPer + 1) * 2) * (((pressesPer + 1) * 2) - 1)) / 2;
+					i++;
+					}
+			 document.getElementById("buttonFive").innerHTML = "Bought: " + i + ". Presses per presses per press: " + (pressesSquared + 1) + ".";
+          document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Current cost two: " + purchaseCostTwo + ".";
+          document.getElementById("buttonFour").innerHTML = "Presses per press: " + (pressesPer + 1) + ".";
+				} else {
         if (pressesPer > purchaseCostTwo) {
           pressesSquared++;
           pressesPer = pressesPer - purchaseCostTwo;
@@ -106,6 +133,7 @@ function saveGame() {
           document.getElementById("purchaseInfo").innerHTML = "Current cost one: " + purchaseCostOne + ". Failed. Current cost two: " + purchaseCostTwo + ".";
         }
       }
+			}
 
       function resetGame() {
         var confirmation = confirm("Are you sure you would like to delete all stored save data? This is irreversible!");
@@ -127,7 +155,19 @@ function saveGame() {
         }
       }
 
-      function movement() {
+      function movement(shiftPressed) {
+			if (shiftPressed) {
+				i = 0;
+				while (timesPressed >= movementCost) {
+					distance++;
+          		timesPressed = timesPressed - movementCost;
+          		movementCost = 1000 + (distance + 1) ** (2 - (pressesSquared / 20));
+					i++;
+					}
+					document.getElementById("movementInfo").innerHTML = "Bought: " + i + ". Current distance: " + distance + ". Current velocity: " + velocity + ". Current acceleration: " + acceleration + ".";
+         	 	document.getElementById("distanceCostInfo").innerHTML = "Current movement cost: " + movementCost + ".";
+          		document.getElementById("pressesInfo").innerHTML = "Current presses: " + timesPressed;
+				} else {
         if (timesPressed >= movementCost) {
           distance++;
           timesPressed = timesPressed - movementCost;
@@ -139,6 +179,7 @@ function saveGame() {
           document.getElementById("distanceCostInfo").innerHTML = "Failed. Current movement cost: " + movementCost + ".";
         }
       }
+			}
 
       function velocity() {
         if (distance >= speedCost) {
