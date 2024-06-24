@@ -18,10 +18,10 @@
 		<button onclick="presses()">
 			Press this button for a game!
 		</button>
-		<button onclick="morePresses()">
+		<button onclick="morePresses(event.shiftKey)">
 			Press this button to increase presses per press.
 		</button>
-		<button onclick="morePressesAgain()">
+		<button onclick="morePressesAgain(event.shiftKey)">
 			Press this button to increase presses per presses per press.
 		</button>
 		<p>------------</p>
@@ -31,7 +31,7 @@
 		<p id="purchaseInfo"></p>
 		<p id="buttonFive"></p>
 		<p id="movementInfo"></p>
-		<button onclick="movement()">
+		<button onclick="movement(event.shiftKey)">
 			Press this button to move.
 		</button>
 		<p id="distanceCostInfo"></p>
